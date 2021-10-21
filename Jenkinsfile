@@ -9,6 +9,7 @@ pipeline {
          }
          stage('Deploy'){
              steps {
+                sh 'sudo systemctl start docker'
                 sh 'sudo docker-compose -f docker-compose.yml up -d'
              }
          }
