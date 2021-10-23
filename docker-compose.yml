@@ -2,6 +2,9 @@ version: "3"
 services:
     mysql-standalone:
         image: 'mysql:5.7'
+        networks:
+            - spring-boot-mysql-network
+        restart: always
         environment:
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_PASSWORD=root
@@ -19,5 +22,11 @@ services:
         build:
             context: "./"
             dockerfile: "Dockerfile"
+        networks:
+            spring-boot-mysql-network
         depends_on:
             - mysql-standalone
+
+networks:
+    spring-boot-mysql-network:
+    driver: bridge
