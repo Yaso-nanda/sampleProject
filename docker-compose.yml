@@ -28,5 +28,5 @@ services:
             - mysql-standalone
 
 networks:
-    spring-boot-mysql-network:
+  spring-boot-mysql-network:
     driver: bridge
