@@ -1,12 +1,14 @@
 package tech.getarrays.employeemanager;
 
 import org.springframework.boot.SpringApplication;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.Arrays;
 
 @SpringBootApplication
@@ -15,6 +17,8 @@ public class EmployeemanagerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EmployeemanagerApplication.class, args);
 	}
+	//@CrossOrigin(origins ="")
+    @CrossOrigin(origins = "http://http://192.168.50.104:4567")
 
 	@Bean
 	public CorsFilter corsFilter() {

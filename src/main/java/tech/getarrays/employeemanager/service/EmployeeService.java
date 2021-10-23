@@ -9,14 +9,10 @@ import tech.getarrays.employeemanager.repo.EmployeeRepo;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
-
 @Service
 @Transactional
 public class EmployeeService {
     private final EmployeeRepo employeeRepo;
-    
-    //@CrossOrigin(origins ="")
-    @CrossOrigin(origins = "http://http://192.168.50.104:4567")
 
     @Autowired
     public EmployeeService(EmployeeRepo employeeRepo) {
