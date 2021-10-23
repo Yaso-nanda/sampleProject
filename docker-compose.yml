@@ -1,23 +1,32 @@
-version: "3"
+version: "3.8"
+
 services:
-    mysql-standalone:
-        image: 'mysql:5.7'
-        environment:
-            - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_PASSWORD=root
-            - MYSQL_DATABASE=employeemanager
-        ports:
-            - "3308:3306"
-    springboot-docker-container:
-        image: springboot-docker-container
-        ports:
-            - "8085:8080"
-        environment: 
+  mysql-standalone:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=employeemanager
+    ports:
+      - "3308:3306"
+    volumes:
+      - db:/var/lib/mysql
+  springboot-docker-container:
+    depends_on:
+      - mysql-standalone
+    build: ./app
+    restart: on-failure 
+    ports:
+      - "8085:8080"
+    environment:
             SPRING_DATASOURCE_URL: jdbc:mysql://mysql-standalone:3306/employeemanager
             SPRING_DATASOURCE_USERNAME: "root"
             SPRING_DATASOURCE_PASSWORD: "root"
-        build:
-            context: "./"
-            dockerfile: "Dockerfile"
-        depends_on:
-            - mysql-standalone
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
+
+volumes:
+  db:
