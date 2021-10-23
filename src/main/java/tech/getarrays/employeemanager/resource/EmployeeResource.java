@@ -18,7 +18,7 @@ public class EmployeeResource {
     }
 
     @GetMapping("/all")
-    @CrossOrigin(origins = "http://192.168.50.104:4567")
+    @CrossOrigin(origins = "http://192.168.50.104:4567/employeemanagerapp")
     public ResponseEntity<List<Employee>> getAllEmployees () {
         List<Employee> employees = employeeService.findAllEmployees();
         return new ResponseEntity<>(employees, HttpStatus.OK);
