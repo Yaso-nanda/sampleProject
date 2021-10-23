@@ -14,6 +14,9 @@ import java.util.UUID;
 @Transactional
 public class EmployeeService {
     private final EmployeeRepo employeeRepo;
+    
+    //@CrossOrigin(origins ="")
+    @CrossOrigin(origins = "http://http://192.168.50.104:4567")
 
     @Autowired
     public EmployeeService(EmployeeRepo employeeRepo) {
