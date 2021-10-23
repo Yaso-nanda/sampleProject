@@ -15,7 +15,9 @@ services:
   springboot-docker-container:
     depends_on:
       - mysql-standalone
-    build: ./
+    build: 
+          context: "./"
+          dockerfile: "Dockerfile"
     restart: on-failure 
     ports:
       - "8085:8080"
