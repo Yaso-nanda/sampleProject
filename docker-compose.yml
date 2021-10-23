@@ -23,7 +23,7 @@ services:
             context: "./"
             dockerfile: "Dockerfile"
         networks:
-            spring-boot-mysql-network
+            - spring-boot-mysql-network
         depends_on:
             - mysql-standalone
 
